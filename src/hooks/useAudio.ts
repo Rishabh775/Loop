@@ -14,6 +14,18 @@ export default function useAudio() {
     localStorage.setItem("playlist", JSON.stringify(playlist));
   }, [playlist]);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+      setPlaylist((prev) =>
+        prev.map((track, index) =>
+          index === currentTrackIndex
+            ? { ...track, isPlaying: true }
+            : { ...track, isPlaying: false }
+        )
+      );
+    }
+  }, [currentTrackIndex]);
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     // e.preventDefault();
     const file = e.target.files?.[0];
@@ -44,14 +56,6 @@ export default function useAudio() {
     setCurrentTrackIndex((prevIndex) =>
       prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
     );
-    setPlaylist((prev) =>
-      prev.map((track, index) => {
-        return {
-          ...track,
-          isPlaying: index === currentTrackIndex - 1 ? true : false,
-        };
-      })
-    );
   };
 
   const handlePlayPause = (e: React.MouseEvent, lastModified: number) => {
@@ -68,11 +72,6 @@ export default function useAudio() {
     );
     setCurrentTrackIndex(newTrackIndex);
   };
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
-  }, [currentTrackIndex]);
 
   return {
     playlist,
