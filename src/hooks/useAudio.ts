@@ -1,0 +1,86 @@
+import { useEffect, useRef, useState } from "react";
+import { AudioFile } from "../types/files";
+
+export default function useAudio() {
+  const [playlist, setPlaylist] = useState(() => {
+    const saved = localStorage.getItem("playlist");
+    const initialValue: AudioFile[] = JSON.parse(saved || "[]");
+    return initialValue;
+  });
+  const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    localStorage.setItem("playlist", JSON.stringify(playlist));
+  }, [playlist]);
+
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // e.preventDefault();
+    const file = e.target.files?.[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setPlaylist((prev) => [
+        ...prev,
+        {
+          name: file.name,
+          lastModified: file.lastModified,
+          size: file.size,
+          isPlaying: false,
+          links: url,
+        },
+      ]);
+    }
+  };
+
+  const handleDelete = (lastModified: number) => {
+    setPlaylist((prev) =>
+      prev.filter((track) => track.lastModified !== lastModified)
+    );
+  };
+
+  // ++++++++++++++++++++++++++++++++++++++++  Audio functionality +++++++++++++++++++++++++++++++++++++++++++++
+
+  const handleTrackEnd = () => {
+    setCurrentTrackIndex((prevIndex) =>
+      prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
+    );
+    setPlaylist((prev) =>
+      prev.map((track, index) => {
+        return {
+          ...track,
+          isPlaying: index === currentTrackIndex - 1 ? true : false,
+        };
+      })
+    );
+  };
+
+  const handlePlayPause = (e: React.MouseEvent, lastModified: number) => {
+    e.preventDefault();
+    const newPlaylist = playlist.map((track) => {
+      if (track.lastModified === lastModified) {
+        return { ...track, isPlaying: !track.isPlaying };
+      }
+      return { ...track, isPlaying: false };
+    });
+    setPlaylist(newPlaylist);
+    const newTrackIndex = newPlaylist.findIndex(
+      (track) => track.lastModified === lastModified
+    );
+    setCurrentTrackIndex(newTrackIndex);
+  };
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, [currentTrackIndex]);
+
+  return {
+    playlist,
+    currentTrackIndex,
+    audioRef,
+    handleUpload,
+    handleTrackEnd,
+    handlePlayPause,
+    handleDelete,
+  };
+}
