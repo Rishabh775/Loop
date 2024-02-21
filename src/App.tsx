@@ -17,7 +17,7 @@ function App() {
       <div className="text-center bg-black font-bold text-3xl sm:text-7xl py-8 sm:p-8">
         <h1 className="text-white">JUKEBOX</h1>
       </div>
-      <div className="flex lg:flex-row lg:items-stretch items-center justify-center mt-40 mb-48 sm:flex-col max-sm:flex-col">
+      <div className="flex lg:flex-row lg:items-stretch items-center justify-center rounded-lg mt-40 mb-48 sm:flex-col max-sm:flex-col">
         <div className="flex items-center justify-center max-lg:w-2/3 w-2/6 lg:mr-20 sm:m-0">
           <div className="flex flex-col items-center w-full h-full space-y-8 bg-gray-100 p-8">
             <h2 className="text-4xl font-bold">Playlist</h2>
