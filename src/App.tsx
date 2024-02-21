@@ -21,10 +21,10 @@ function App() {
         <div className="flex items-center justify-center max-lg:w-2/3 w-2/6 lg:mr-20 sm:m-0">
           <div className="flex flex-col items-center w-full h-full space-y-8 bg-gray-100 p-8">
             <h2 className="text-4xl font-bold">Playlist</h2>
-            <div>
+            <div className="w-full">
               {playlist.map((track, index) => (
                 <div
-                  className="flex  items-center gap-2  font-semibold cursor-pointer grow"
+                  className="flex  items-center gap-2 font-semibold cursor-pointer "
                   key={index}
                 >
                   <label
@@ -37,7 +37,7 @@ function App() {
                   </label>
                   <button
                     onClick={() => handleDelete(track.lastModified)}
-                    className="text-red-500 scale-125"
+                    className="scale-125  hover:scale-150"
                   >
                     <FaTrash />
                   </button>
