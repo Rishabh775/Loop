@@ -1,7 +1,6 @@
 import { RiFacebookCircleLine } from "react-icons/ri";
 import { AiFillGithub } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
-import React from "react";
 
 const Footer = () => {
   return (

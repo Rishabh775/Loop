@@ -1,4 +1,3 @@
-import React from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { CgCommunity } from "react-icons/cg";
 import { SiChromecast } from "react-icons/si";

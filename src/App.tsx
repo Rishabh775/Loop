@@ -1,15 +1,15 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const Main = lazy(() => import("./pages/Main.jsx"));
-const Login = lazy(() => import("./pages/Login.jsx"));
-const Register = lazy(() => import("./pages/Register.jsx"));
-const Error = lazy(() => import("./pages/Error.jsx"));
-const Phone = lazy(() => import("./pages/Phone.jsx"));
-const Forgot = lazy(() => import("./pages/Forgot.jsx"));
+const Main = lazy(() => import("./pages/Main.tsx"));
+const Login = lazy(() => import("./pages/Login.tsx"));
+const Register = lazy(() => import("./pages/Register.tsx"));
+const Error = lazy(() => import("./pages/Error.tsx"));
+const Phone = lazy(() => import("./pages/Phone.tsx"));
+const Forgot = lazy(() => import("./pages/Forgot.tsx"));
 
-import Footer from "./components/Footer.jsx";
-import Navbar from "./components/Navbar.jsx";
+// import Footer from "./components/Footer.tsx";
+// import Navbar from "./components/Navbar.tsx";
 
 const App = () => {
   return (
