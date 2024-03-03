@@ -28,7 +28,7 @@ export default function Header({ children, className }: HeaderProps) {
         <div className="flex justify-between items-center gap-x-4">
           <>
             <div>
-              <Button />
+              <Button>Sign Up</Button>
             </div>
           </>
         </div>
