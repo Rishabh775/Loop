@@ -18,11 +18,15 @@ export default function Header({ children, className }: HeaderProps) {
         className="
         w-full mb-4 flex items-center justify-between"
       >
-        <div className="hidden lg:flex  gap-x-2 w-[30%] text-black items-center relative">
-          <BiSearch className="absolute inset-4  " size={25} />
+        <div className="hidden lg:flex gap-x-2 w-[30%] text-black items-center relative">
           <input
+            type="search"
             placeholder="        Search Music"
-            className=" bg-white  rounded-2xl p-4 w-full"
+            className="bg-white rounded-2xl p-4 w-full pl-12"
+          />
+          <BiSearch
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-black"
+            size={25}
           />
         </div>
         <div className="hidden md:flex items-center gap-x-10 text-white font-medium">
