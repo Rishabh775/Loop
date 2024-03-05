@@ -53,7 +53,7 @@ export default function Sidebar() {
 
   return (
     <div className="flex h-full   ">
-      <div className=" resize-div min-w-[280px] hidden w-auto md:flex max-w-[600px]  h-screen flex-col  gap-y-2 bg-black p-2">
+      <div className=" min-w-[270px] hidden w-auto md:flex max-w-[600px]  h-screen flex-col  gap-y-2 bg-black p-2">
         <Box className="overflow-y-auto h-full">
           <div className="flex justify-center items-center gap-2">
             <SiLoop size={40} />
