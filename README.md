@@ -1,4 +1,12 @@
-# React + TypeScript + Vite
+#LOOP
+#Branch 
+#Main Branch -Rishabh
+#bugfix/ui  Branch - Amitesh
+#development Branch - final changes
+#final Branch - Production
+
+
+# React + TypeScript + Vit
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
