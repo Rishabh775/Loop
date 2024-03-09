@@ -12,6 +12,7 @@ const Home = lazy(() => import("./pages/Home.tsx"));
 
 import Sidebar from "./components/sidebar.tsx";
 import RightBar from "./components/RightBar.tsx";
+import Loading from "./pages/Loading.tsx";
 // import Footer from "./components/Footer.tsx";
 // import Navbar from "./components/Navbar.tsx";
 
@@ -19,7 +20,7 @@ const App = () => {
   return (
     <>
       <div className="flex">
-        <Suspense fallback={<>Loading...</>}>
+        <Suspense fallback={<Loading />}>
           <Router>
             <Sidebar />
             <Routes>

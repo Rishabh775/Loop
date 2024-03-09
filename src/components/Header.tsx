@@ -8,7 +8,6 @@ interface HeaderProps {
   className?: string;
 }
 
-import React from "react"; // Add the missing import
 import { Link } from "react-router-dom";
 
 export default function Header({ children, className }: HeaderProps) {
@@ -29,7 +28,7 @@ export default function Header({ children, className }: HeaderProps) {
             size={25}
           />
         </div>
-        <div className="hidden md:flex items-center gap-x-10 text-white font-medium">
+        <div className="hidden md:flex items-center gap-x-10 text-white text-xl font-medium">
           <Link to="/" className="">
             Home
           </Link>
