@@ -51,20 +51,24 @@ export default function Header({ children, className }: HeaderProps) {
         <div className="flex justify-between items-center gap-x-4">
           <>
             <div>
-              <Button
-                onClick={() => {}}
-                className="bg-transparent text-neutral-300 font-medium"
-              >
-                Sign Up
-              </Button>
+              <Link to="/register">
+                <Button
+                  onClick={() => {}}
+                  className="bg-transparent text-neutral-300 font-medium"
+                >
+                  Sign Up
+                </Button>
+              </Link>
             </div>
             <div>
-              <Button
-                onClick={() => {}}
-                className="bg-white px-6 py-2 font-medium"
-              >
-                Log in
-              </Button>
+              <Link to={"/login"}>
+                <Button
+                  onClick={() => {}}
+                  className="bg-white px-6 py-2 font-medium"
+                >
+                  Log in
+                </Button>
+              </Link>
             </div>
           </>
         </div>

@@ -22,7 +22,6 @@ const App = () => {
       <div className="flex">
         <Suspense fallback={<Loading />}>
           <Router>
-            <Sidebar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/*" element={<Error />} />
@@ -31,7 +30,6 @@ const App = () => {
               <Route path="/phone" element={<Phone />} />
               <Route path="/forgot-password" element={<Forgot />} />
             </Routes>
-            <RightBar />
           </Router>
         </Suspense>
       </div>
