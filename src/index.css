@@ -13,3 +13,14 @@ body :root {
   overflow: auto;
   resize: hidden;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: violet;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-track {
+  width: 8px;
+}
