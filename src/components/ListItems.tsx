@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-interface ListItemsProps {
-  image: string;
-  name: string;
-  href: string;
-}
+// interface ListItemsProps {
+//   image: string;
+//   name: string;
+//   href: string;
+// }
 
-export default function ListItems({ image, name, href }: ListItemsProps) {
-  const [songs, setSongs] = useState();
+export default function ListItems() {
+  const [songs, setSongs] = useState(null || []);
   useEffect(() => {
     async function getData() {
       const options = {

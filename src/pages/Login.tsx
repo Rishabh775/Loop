@@ -1,12 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 
 const Login = () => {
-  const handleSubmit = () => {};
+  const navigator = useNavigate();
+  const handleSubmit = () => {
+    axios
+      .post("http://localhost:5000/api/auth/register", {
+        // Change the endpoint to your login endpoint
+        email: formik.values.email,
+        password: formik.values.password,
+      })
+      .then((response) => {
+        console.log(response);
+        navigator("/"); // Redirect after successful login
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const formik = useFormik({
     initialValues: {

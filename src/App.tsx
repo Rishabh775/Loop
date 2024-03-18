@@ -10,8 +10,8 @@ const Forgot = lazy(() => import("./pages/Forgot.tsx"));
 const Home = lazy(() => import("./pages/Home.tsx"));
 // const Sidebar = lazy(() => import("./components/sidebar.tsx"));
 
-import Sidebar from "./components/sidebar.tsx";
-import RightBar from "./components/RightBar.tsx";
+// import Sidebar from "./components/sidebar.tsx";
+// import RightBar from "./components/RightBar.tsx";
 import Loading from "./pages/Loading.tsx";
 // import Footer from "./components/Footer.tsx";
 // import Navbar from "./components/Navbar.tsx";
