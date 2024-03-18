@@ -8,20 +8,28 @@ import axios from "axios";
 
 const Login = () => {
   const navigator = useNavigate();
-  const handleSubmit = () => {
-    axios
-      .post("http://localhost:5000/api/auth/register", {
-        // Change the endpoint to your login endpoint
-        email: formik.values.email,
-        password: formik.values.password,
-      })
-      .then((response) => {
-        console.log(response);
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email: formik.values.email,
+          password: formik.values.password,
+        }
+      );
+
+      // Check if login was successful based on response status
+      if (response.status === 200) {
+        console.log("Login successful!");
         navigator("/"); // Redirect after successful login
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      } else {
+        console.error("Login failed. Status:", response.status);
+        // Handle other status codes if needed
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      // Handle error, e.g., show error message to the user
+    }
   };
 
   const formik = useFormik({

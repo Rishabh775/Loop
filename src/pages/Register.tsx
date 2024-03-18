@@ -1,8 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useFormik } from "formik";
+import axios from "axios";
 
 const Register = () => {
+  const navigator = useNavigate();
+
+  const handleSubmit = async (values: any) => {
+    // Check if passwords match
+    if (values.password !== values.confirmPassword) {
+      console.error("Passwords do not match");
+      alert("Passwords do not match");
+      return; // Don't proceed with registration
+    }
+
+    try {
+      // Remove confirmPassword from values before sending to backend
+      const { confirmPassword, ...data } = values;
+
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        data
+      );
+      console.log(response);
+      navigator("/"); // Redirect after successful registration
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: handleSubmit,
+  });
+
   return (
     <>
       <div className=" w-full">
@@ -14,26 +53,38 @@ const Register = () => {
               <p className="text-gray-100">Where Music Finds you</p>
             </header>
             <form
-              action=""
+              onSubmit={formik.handleSubmit}
               className=" flex flex-col gap-2 items-center py-4 text-white"
             >
               <input
                 type="email"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
                 className="px-4 py-3 rounded-lg outline-none bg-transparent border border-slate-700"
-                placeholder="email"
+                placeholder="username or email"
               />
               <input
                 type="text"
+                name="username"
+                value={formik.values.username}
+                onChange={formik.handleChange}
                 className="px-4 py-3 rounded-lg outline-none bg-transparent border border-slate-700"
                 placeholder="username"
               />
               <input
                 type="password"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
                 className="px-4 py-3 rounded-lg outline-none bg-transparent border border-slate-700"
                 placeholder="password"
               />
               <input
                 type="password"
+                name="confirmPassword"
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
                 className="px-4 py-3 rounded-lg outline-none bg-transparent border border-slate-700"
                 placeholder="confirm password"
               />
@@ -47,7 +98,10 @@ const Register = () => {
                 </Link>
               </div>
               <div>
-                <button className=" bg-teal-500 px-4 mt-3 py-3 w-40 rounded-lg hover:bg-teal-600 duration-300">
+                <button
+                  type="submit"
+                  className=" bg-teal-500 px-4 mt-3 py-3 w-40 rounded-lg hover:bg-teal-600 duration-300"
+                >
                   Register
                 </button>
               </div>
