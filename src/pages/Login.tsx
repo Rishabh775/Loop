@@ -1,45 +1,38 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-// import toast from "react-hot-toast";
-
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const navigator = useNavigate();
-  const handleSubmit = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        {
-          email: formik.values.email,
-          password: formik.values.password,
-        }
-      );
-
-      // Check if login was successful based on response status
-      if (response.status === 200) {
-        console.log("Login successful!");
-        navigator("/"); // Redirect after successful login
-      } else {
-        console.error("Login failed. Status:", response.status);
-        // Handle other status codes if needed
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
-      // Handle error, e.g., show error message to the user
-    }
-  };
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      identifier: "", // Change 'email' to 'identifier' to support both email and username
       password: "",
     },
-    validateOnBlur: false,
-    validateOnChange: false,
-    onSubmit: handleSubmit,
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/auth/login",
+          values // Send the entire 'values' object containing 'identifier' and 'password'
+        );
+
+        if (response.status === 200) {
+          console.log("Login successful!");
+          toast.success("Successfully Logged In Bro");
+          navigate("/"); // Redirect after successful login
+        } else {
+          console.error("Login failed. Status:", response.status);
+          // Handle other status codes if needed
+        }
+      } catch (error) {
+        console.error("Login failed:", error);
+        // Handle error, e.g., show error message to the user
+      }
+    },
   });
 
   return (
@@ -57,18 +50,18 @@ const Login = () => {
               className="flex flex-col gap-2 items-center py-4 text-white"
             >
               <input
-                type="text"
-                name="email"
-                value={formik.values.email}
+                value={formik.values.identifier} // Use 'identifier' for both email and username
                 onChange={formik.handleChange}
+                type="text"
+                name="identifier"
                 className="px-4 py-3 rounded-lg outline-none bg-transparent border border-slate-700"
                 placeholder="username or email"
               />
               <input
-                type="password"
-                name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
+                type="password"
+                name="password"
                 className="px-4 py-3 rounded-lg outline-none bg-transparent border border-slate-700"
                 placeholder="password"
               />

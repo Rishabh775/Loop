@@ -3,9 +3,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useFormik } from "formik";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values: any) => {
     // Check if passwords match
@@ -24,7 +25,8 @@ const Register = () => {
         data
       );
       console.log(response);
-      navigator("/"); // Redirect after successful registration
+      navigate("/login"); // Redirect after successful registration
+      toast.success("Successfully Registered in Loop");
     } catch (error) {
       console.error(error);
     }
