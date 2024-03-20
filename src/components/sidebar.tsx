@@ -1,5 +1,6 @@
 import { FaFolder, FaMusic, FaPodcast } from "react-icons/fa";
 import Box from "./Box";
+import loop from "../assets/images/loop.png";
 import { FaHeart, FaRadio } from "react-icons/fa6";
 import { SiLoop } from "react-icons/si";
 import { LuListPlus } from "react-icons/lu";
@@ -56,9 +57,10 @@ export default function Sidebar() {
       <div className=" min-w-[270px] hidden w-auto md:flex max-w-[600px]  h-screen flex-col  gap-y-2 bg-black p-2">
         <Box className="overflow-y-auto h-full">
           <div className="flex justify-center items-center gap-2">
-            <SiLoop size={40} />
+            <div className="text-3xl py-8 font-bold text-center">L</div>
+            <img src={loop} alt="loop-logo" className=" w-14" />
 
-            <div className="text-3xl py-8 font-bold text-center">LOOP</div>
+            <div className="text-3xl py-8 font-bold text-center">P</div>
           </div>
           <div className="flex flex-col gap-y-2">
             {sideBarData.map((item) => (
