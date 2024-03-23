@@ -1,18 +1,18 @@
 // import { AudioFile } from "../types/files";
-import music from "../assets/songs/03. Tu Ne Jo Na Kaha.mp3";
-import music2 from "../assets/songs/04 Hai Dil Ye Mera - Hate Story 2 [PagalWorld] Arijit Singh -192Kbps.mp3";
-import music3 from "../assets/songs/05 Phir Suna (Gajendra Verma).mp3";
-import music4 from "../assets/songs/1-Maari Thara Local (Here Comes Maari)-SenSongsMp3.Co.mp3";
-import music5 from "../assets/songs/320kbps_Padmaavat - Binte Dil.mp3";
-import music6 from "../assets/songs/320kbps_Padmaavat - Ek Dil Ek Jaan.mp3";
-import music7 from "../assets/songs/_Dekh Lena_320(PagalWorld.com.pe).mp3";
-import music8 from "../assets/songs/_Heeriye_320(PagalWorld.com.pe).mp3";
-import music9 from "../assets/songs/Aaj Phir (Hate Story 2) Arijit Singh (128Kbps Webrip).mp3";
-import music10 from "../assets/songs/Aaja We Mahiya_320(PagalWorld.com.pe).mp3";
-import music11 from "../assets/songs/Jo Tum Na Ho_320(PagalWorld.com.pe).mp3";
-import music12 from "../assets/songs/Satranga_320(PagalWorlld.Com).mp3";
-import music13 from "../assets/songs/Deva Deva - Pritam, Arijit Singh, Amitabh Bhattacharya, Jonita Gandhi.m4a";
-import music14 from "../assets/songs/Afreen Afreen_320(PagalWorld.com.pe).mp3";
+import music from "../assets/songs/Tu Ne Jo Na Kaha.mp3";
+import music2 from "../assets/songs/Hai Dil Ye Mera.mp3";
+import music3 from "../assets/songs/Phir Suna.mp3";
+import music4 from "../assets/songs/Maari Thara Local.mp3";
+import music5 from "../assets/songs/Binte Dil.mp3";
+import music6 from "../assets/songs/Ek Dil Ek Jaan.mp3";
+import music7 from "../assets/songs/Dekh Lena.mp3";
+import music8 from "../assets/songs/Heeriye.mp3";
+import music9 from "../assets/songs/Aaj Phir.mp3";
+import music10 from "../assets/songs/Aaja We Mahiya.mp3";
+import music11 from "../assets/songs/Jo Tum Na Ho.mp3";
+import music12 from "../assets/songs/Satranga.mp3";
+import music13 from "../assets/songs/Deva Deva.m4a";
+import music14 from "../assets/songs/Afreen Afreen.mp3";
 
 const dummyData = [
   {
